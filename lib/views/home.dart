@@ -31,6 +31,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -47,13 +48,19 @@ class _HomeState extends State<Home> {
         ),
       ),
       body: _isLoading
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator(),
             )
           : ListView.builder(
             itemCount: recipeList.length,
-              itemBuilder: (context, index) => RecipeCard(
+              itemBuilder: (context, index) =>(index != recipeList.length-1)? RecipeCard(
                 recipeList[index],
+              ):Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  RecipeCard(recipeList[index]),
+                  const SizedBox(height: 400,)
+                ],
               ),
             ),
     );

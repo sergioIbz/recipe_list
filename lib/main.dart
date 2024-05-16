@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       title: 'Material App',
-      home: Home(),
+      home: const Home(),
     );
   }
 }
