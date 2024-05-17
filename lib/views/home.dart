@@ -52,16 +52,20 @@ class _HomeState extends State<Home> {
               child: CircularProgressIndicator(),
             )
           : ListView.builder(
-            itemCount: recipeList.length,
-              itemBuilder: (context, index) =>(index != recipeList.length-1)? RecipeCard(
-                recipeList[index],
-              ):Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  RecipeCard(recipeList[index]),
-                  const SizedBox(height: 400,)
-                ],
-              ),
+              itemCount: recipeList.length,
+              itemBuilder: (context, index) => (index != recipeList.length - 1)
+                  ? RecipeCard(
+                      recipeList[index],
+                    )
+                  : Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        RecipeCard(recipeList[index]),
+                        const SizedBox(
+                          height: 200,
+                        )
+                      ],
+                    ),
             ),
     );
   }
