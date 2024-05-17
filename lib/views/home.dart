@@ -52,6 +52,7 @@ class _HomeState extends State<Home> {
               child: CircularProgressIndicator(),
             )
           : ListView.builder(
+              cacheExtent: 0.0,
               itemCount: recipeList.length,
               itemBuilder: (context, index) => (index != recipeList.length - 1)
                   ? RecipeCard(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_list/models/recipe.dart';
-import 'package:vector_math/vector_math_64.dart' as vector;
 
 class RecipeCard extends StatelessWidget {
   final Recipe recipe;
@@ -12,20 +11,14 @@ class RecipeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TweenAnimationBuilder<double>(
-      duration: const Duration(milliseconds: 800),
+      duration: const Duration(milliseconds: 600),
       tween: Tween(begin: 0.0, end: 1.0),
       builder: (BuildContext context, dynamic value, Widget? child) {
         return Transform.scale(
           scale: 0.4 + (0.6 * value),
-          child: Transform(
-            alignment: Alignment.center,
-            transform: Matrix4.identity()
-              ..setEntry(3, 2, 0.001)
-              ..rotateX(
-                vector.radians(-60 + (60 * value as double)),
-              ),
-            child: WidgetCard(recipe: recipe),
-          ),
+          child: Transform.translate(
+              offset: Offset(-200 * (1 - value as double), 0.0),
+              child: WidgetCard(recipe: recipe)),
         );
       },
     );
